@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sk.stuba.fei.uim.oop.assignment3.cart.logic.ICartService;
 import sk.stuba.fei.uim.oop.assignment3.cart.web.bodies.CartResponse;
+import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,5 +29,10 @@ public class CartController {
 //    public List<CartResponse> getAllCards() {
 //        return this.service.getAllCard().stream().map(CartResponse::new).collect(Collectors.toList());
 //    }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteCart(@PathVariable("id")Long cartId) throws NotFoundException {
+        this.service.delete(cartId);
+    }
 
 }

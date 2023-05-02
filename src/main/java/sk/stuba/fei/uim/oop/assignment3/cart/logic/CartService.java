@@ -32,4 +32,10 @@ public class CartService implements ICartService {
     public List<Cart> getAllCard() {
         return this.repository.findAll();
     }
+
+    @Override
+    public void delete(Long id) throws NotFoundException {
+        Cart Cart = this.getCardById(id);
+        this.repository.delete(Cart);
+    }
 }

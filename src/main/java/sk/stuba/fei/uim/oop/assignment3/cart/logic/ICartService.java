@@ -12,4 +12,6 @@ public interface ICartService {
     Cart getCardById(Long id) throws NotFoundException;
 
     List<Cart> getAllCard();
+
+    void delete(Long id) throws NotFoundException;
 }
