@@ -10,7 +10,6 @@ import sk.stuba.fei.uim.oop.assignment3.cart.logic.ICartService;
 import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 
-
 @RestController
 @RequestMapping("/cart")
 public class CartController {

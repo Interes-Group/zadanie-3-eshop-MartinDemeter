@@ -11,7 +11,6 @@ public class CartResponse {
 
     private Long id;
 
-
     private List<CartRequest> shoppingList;
 
     private boolean payed;
@@ -20,6 +19,5 @@ public class CartResponse {
         this.id = shoppingCart.getId();
         this.payed = shoppingCart.isPayed();
         this.shoppingList = shoppingCart.getShoppingList().stream().map(CartRequest::new).collect(Collectors.toList());
-
     }
 }

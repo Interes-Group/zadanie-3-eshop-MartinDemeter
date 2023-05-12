@@ -20,6 +20,4 @@ public class Cart {
     private boolean payed;
 
     public Cart() {this.shoppingList = new ArrayList<>(); }
-
-
 }

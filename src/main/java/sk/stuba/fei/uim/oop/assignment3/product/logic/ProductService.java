@@ -16,7 +16,6 @@ public class ProductService implements IProductService {
     @Autowired
     private ProductRepository repository;
 
-
     @Override
     public List<Product> getAll() {
         return this.repository.findAll();
@@ -48,7 +47,6 @@ public class ProductService implements IProductService {
         return product;
     }
 
-
     @Override
     public void deleteProduct(Long id) throws NotFoundException {
         this.repository.delete(this.getProductById(id));
@@ -66,5 +64,4 @@ public class ProductService implements IProductService {
         this.repository.save(product);
         return product.getAmount();
     }
-
 }

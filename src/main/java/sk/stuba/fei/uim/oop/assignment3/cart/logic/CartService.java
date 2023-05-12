@@ -13,7 +13,6 @@ import sk.stuba.fei.uim.oop.assignment3.product.logic.IProductService;
 
 import java.util.Optional;
 
-
 @Service
 public class CartService implements ICartService {
 
@@ -24,7 +23,7 @@ public class CartService implements ICartService {
     private IProductService productService;
 
     @Autowired
-    private ICartAddService cartAddService;;
+    private ICartAddService cartAddService;
 
 
     @Override
@@ -47,8 +46,6 @@ public class CartService implements ICartService {
         this.repository.delete(Cart);
     }
 
-
-
     @Override
     public Cart addToCart(Long id, CartRequest cartRequest) throws NotFoundException, IllegalOperationException {
         Cart cart = this.getCardById(id);
@@ -60,7 +57,6 @@ public class CartService implements ICartService {
             Optional<CartAdd> existingCartItem = cart.getShoppingList().stream()
                     .filter(cartAdd -> cartAdd.getProduct().getId().equals(product.getId()))
                     .findFirst();
-
             if (existingCartItem.isPresent()) {
                 CartAdd cartAdd = existingCartItem.get();
                 cartAdd.setAmount(cartAdd.getAmount() + cartRequest.getAmount());
@@ -70,7 +66,6 @@ public class CartService implements ICartService {
                 cartAdd.setProduct(product);
                 cart.getShoppingList().add(cartAdd);
             }
-
             product.setAmount(product.getAmount() - cartRequest.getAmount());
             return this.repository.save(cart);
         }
@@ -81,7 +76,6 @@ public class CartService implements ICartService {
         Cart cart = this.getCardById(id);
         if (cart.isPayed()) {
             throw new IllegalOperationException();
-
         } else {
             double price = cart.getShoppingList().stream()
                     .mapToDouble(item -> item.getAmount() * item.getProduct().getPrice())
@@ -90,6 +84,4 @@ public class CartService implements ICartService {
             return String.valueOf(price);
         }
     }
-
-
 }
