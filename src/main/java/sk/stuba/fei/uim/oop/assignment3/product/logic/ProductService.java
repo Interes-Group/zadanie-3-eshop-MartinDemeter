@@ -45,7 +45,7 @@ public class ProductService implements IProductService {
         if (request.getDescription() != null) {
             product.setDescription(request.getDescription());
         }
-        return this.repository.save(product);
+        return product;
     }
 
 

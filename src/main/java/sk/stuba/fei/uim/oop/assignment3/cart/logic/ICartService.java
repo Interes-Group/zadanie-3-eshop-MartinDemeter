@@ -1,9 +1,10 @@
 package sk.stuba.fei.uim.oop.assignment3.cart.logic;
 
 import sk.stuba.fei.uim.oop.assignment3.cart.data.Cart;
+import sk.stuba.fei.uim.oop.assignment3.cart.web.bodies.CartRequest;
+import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 
-import java.util.List;
 
 public interface ICartService {
 
@@ -11,7 +12,9 @@ public interface ICartService {
 
     Cart getCardById(Long id) throws NotFoundException;
 
-    List<Cart> getAllCard();
-
     void delete(Long id) throws NotFoundException;
+
+    Cart addToCart(Long id, CartRequest cartRequest) throws NotFoundException, IllegalOperationException;
+
+    String payForCard(Long id) throws NotFoundException, IllegalOperationException;
 }
